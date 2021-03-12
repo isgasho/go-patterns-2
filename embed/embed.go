@@ -13,7 +13,7 @@ import (
 //go:embed frontend/build/*
 var assets embed.FS
 
-// Here we create a scoped filesystem so we resolve file names relative to the build directory.
+// GetFilesystem creates a scoped filesystem so we resolve file names relative to the build directory.
 func GetFilesystem() http.FileSystem {
 	return http.FS(&scopedFilesystem{
 		backend: assets,

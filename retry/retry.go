@@ -35,7 +35,7 @@ loop:
 // This pattern was suggested by @bwplotka. It demonstrates how to create a reusable retrier that executes the "what" function.
 // It is somewhat limited because it cannot return values, but it is a single implementation for retrying.
 
-func retry(what func() error, howOften time.Duration, forHowLong context.Context) (err error) {
+func retry(forHowLong context.Context, what func() error, howOften time.Duration) (err error) {
 	for {
 		println("Trying with callback demo...")
 		if err = what(); err == nil {
@@ -51,16 +51,16 @@ func retry(what func() error, howOften time.Duration, forHowLong context.Context
 
 func main() {
 	// Demo 1, with hard-coded call
-	ctx, cancelFunc := context.WithTimeout(context.Background(), 20 * time.Second)
+	ctx, cancelFunc := context.WithTimeout(context.Background(), 20*time.Second)
 	defer cancelFunc()
 	if err := retryDemo(ctx); err != nil {
 		fmt.Printf("%v\n", err)
 	}
 
 	// Demo 2 with callbacks
-	ctx2, cancelFunc2 := context.WithTimeout(context.Background(), 20 * time.Second)
+	ctx2, cancelFunc2 := context.WithTimeout(context.Background(), 20*time.Second)
 	defer cancelFunc2()
-	if err := retry(someNetworkBoundCall, 10 * time.Second, ctx2); err != nil {
+	if err := retry(ctx2, someNetworkBoundCall, 10*time.Second); err != nil {
 		fmt.Printf("%v\n", err)
 	}
 }

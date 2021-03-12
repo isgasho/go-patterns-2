@@ -13,6 +13,7 @@ func NewA(b B) A {
 	}
 }
 
+// NewB is the factory for the B implementation
 func NewB() B {
 	return &b{}
 }
@@ -20,19 +21,20 @@ func NewB() B {
 // endregion
 
 // region Interfaces
+// B is a sample interface. The actual b implementation is below.
 type B interface {
 	DoSomething()
 }
 
+// A is a sample interface. The actual a implementation is below.
 type A interface {
 	DoSomethingElse()
 }
-// endregion
 
+// endregion
 
 // region Implementation
 type b struct {
-
 }
 
 func (b b) DoSomething() {
@@ -47,6 +49,7 @@ type a struct {
 func (a *a) DoSomethingElse() {
 	a.b.DoSomething()
 }
+
 // endregion
 
 func main() {

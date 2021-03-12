@@ -21,7 +21,7 @@ func parallelProcessDemo(items []string, parallelism int) {
 			sem <- struct{}{}
 			defer func() {
 				// Release one slot in the sem
-				<- sem
+				<-sem
 				// Signal that the item is done.
 				wg.Done()
 			}()
@@ -36,5 +36,5 @@ func parallelProcessDemo(items []string, parallelism int) {
 }
 
 func main() {
-	parallelProcessDemo([]string{"1","2","3","4","5","6","7","8","9"}, 3)
+	parallelProcessDemo([]string{"1", "2", "3", "4", "5", "6", "7", "8", "9"}, 3)
 }

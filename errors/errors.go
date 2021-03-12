@@ -5,7 +5,6 @@ import (
 	"fmt"
 )
 
-
 // region Error struct
 
 // Let's create a custom error type
@@ -35,23 +34,24 @@ func checkStructError() {
 		}
 	}
 }
+
 // endregion
 
 //region Error variable
 
 // This example demonstrates how to use a static error
 
-var myErrorVar = fmt.Errorf("This is an error")
+var errMyVarError = fmt.Errorf("this is an error")
 
 // We return the error stored above
 func generateVarError() error {
-	return myErrorVar
+	return errMyVarError
 }
 
 func checkVarError() {
 	if err := generateVarError(); err != nil {
-		if errors.Is(err, myErrorVar) {
-			print("A my error happened!")
+		if errors.Is(err, errMyVarError) {
+			print("A my var error happened!")
 		} else {
 			// Handle error that is not a myError
 		}

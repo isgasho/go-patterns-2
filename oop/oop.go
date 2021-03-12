@@ -2,14 +2,14 @@ package main
 
 // This example demonstrates how to do OOP in go
 
-// This is the public interface that others will be able to use
+// Car is the public interface that others will be able to use
 type Car interface {
 	// We force the implementation to implement the Start() and Drive() methods.
 	Start()
 	Drive()
 }
 
-// This is a struct that partially implements Car. It is exported because we want others to embed it.
+// AbstractCar is a struct that partially implements Car. It is exported because we want others to embed it.
 type AbstractCar struct {
 }
 
@@ -19,7 +19,7 @@ func (a *AbstractCar) Start() {
 	println("Car now starting")
 }
 
-// This is the constructor. We return the Car interface instead of the *car implementation
+// NewCar the constructor. We return the Car interface instead of the *car implementation
 // because we want to force the implementation to be correct.
 func NewCar(param1 string, param2 int) (Car, error) {
 	return &car{
