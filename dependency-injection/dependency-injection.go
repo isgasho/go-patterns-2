@@ -21,6 +21,7 @@ func NewB() B {
 // endregion
 
 // region Interfaces
+
 // B is a sample interface. The actual b implementation is below.
 type B interface {
 	DoSomething()

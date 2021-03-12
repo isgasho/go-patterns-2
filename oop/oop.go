@@ -13,7 +13,7 @@ type Car interface {
 type AbstractCar struct {
 }
 
-// This is the implementation of Start. Note that Drive() is not implemented, so any
+// Start is an implementation in the abstract class. Note that Drive() is not implemented, so any
 // inheriting classes like *car below will need to implement it.
 func (a *AbstractCar) Start() {
 	println("Car now starting")
