@@ -1,3 +1,3 @@
-module github.com/debugged_it/go_patterns
+module github.com/haveyoudebuggedit/go_patterns
 
 go 1.16
